@@ -117,7 +117,10 @@
       $(`#${lightboxId}`)
         .find(".lightboxImage")
         .attr("src", element.attr("src"));
-      $(`#${lightboxId}`).modal("toggle");
+      // Use Bootstrap 5 native modal API instead of jQuery
+      const modalElement = document.getElementById(lightboxId);
+      const modal = new bootstrap.Modal(modalElement);
+      modal.toggle();
     },
     prevImage() {
       let activeImage = null;
